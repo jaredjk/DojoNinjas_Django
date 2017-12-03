@@ -1,0 +1,139 @@
+In [1]: Dojo.objects.all()
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+<ipython-input-1-a082f0502820> in <module>()
+----> 1 Dojo.objects.all()
+
+NameError: name 'Dojo' is not defined
+
+In [2]: from apps.dojoninjas.models import *
+
+In [3]: Dojo.objects.all()
+
+OperationalError: no such table: dojoninjas_dojo
+
+In [6]: Dojo.objects.all()
+Out[6]: <QuerySet []>
+
+In [7]: Dojo.objects.create(name="CodingDojo Silicon Valley", city="Mountain View", state="CA")
+Out[7]: <Dojo: Dojo object>
+
+In [8]: Dojo.objects.create(name="CodingDojo Seattle", city="Seattle", state="WA")
+Out[8]: <Dojo: Dojo object>
+
+In [9]: Dojo.objects.create(name="CodingDojo New York", city="New York", state="NY")
+Out[9]: <Dojo: Dojo object>
+
+In [10]: Dojo.objects.all()
+Out[10]: <QuerySet [<Dojo: Dojo object>, <Dojo: Dojo object>, <Dojo: Dojo object>]>
+
+In [11]: Dojo.objects.all()
+Out[11]: <QuerySet [<Dojo: Dojo object>, <Dojo: Dojo object>, <Dojo: Dojo object>]>
+
+In [12]:                                                                                                                                                                                                           
+In [1]: from apps.dojoninjas.models import *
+
+In [2]: Dojo.objects.all()
+Out[2]: <QuerySet [<Blog object: CodingDojo Silicon Valley Mountain View CA>, <Blog object: CodingDojo Seattle Seattle WA>, <Blog object: CodingDojo New York New York NY>]>
+
+In [3]: Dojo.objects.first().ninjas.all()
+Out[3]: <QuerySet []>
+
+
+AttributeError: 'RelatedManager' object has no attribute 'object'
+
+In [5]: d1 = Dojo.objects.get(id=1)
+
+In [6]: Dojo.objects.get(id=1)
+Out[6]: <Blog object: CodingDojo Silicon Valley Mountain View CA>
+
+In [7]: d2 = Dojo.objects.get(id=2)
+
+In [8]: d3 = Dojo.objects.get(id=3)
+
+
+In [14]: Ninja.objects.create(first_name="Jred", last_name="kim", dojo=d1)
+Out[14]: <Blog object: Jred kim >
+
+In [16]: d1.save()
+
+In [18]: Ninja.objects.all()
+Out[18]: <QuerySet [<Blog object: Jred kim >]>
+
+
+In [5]: from apps.dojoninjas.models import *
+
+In [6]: Dojo.objects.all()
+Out[6]: <QuerySet [<Blog object: CodingDojo Silicon Valley Mountain View CA>, <Blog object: CodingDojo Seattle Seattle WA>, <Blog object: CodingDojo New York New York NY>]>
+
+In [7]: Ninja.objects.all()
+Out[7]: <QuerySet [<Blog object: Jred kim Dojo object >]>
+
+
+
+In [9]: Dojo.objects.get(id=1)
+Out[9]: <Blog object: CodingDojo Silicon Valley Mountain View CA>
+
+In [10]: Ninja.objects.get(id=1)
+Out[10]: <Blog object: Jred kim Dojo object >
+
+
+
+In [12]: d1 = Dojo.objects.get(id=1)
+
+In [13]: d2 = Dojo.objects.get(id=2)
+
+In [14]: d3 = Dojo.objects.get(id=3)
+
+In [15]: Ninja.objects.get(id=1)
+Out[15]: <Blog object: Jred kim Dojo object >
+
+In [16]: Ninja.objects.create(first_name="jim", last_name="che", dojo=d1)
+Out[16]: <Blog object: jim che Dojo object >
+
+In [17]: Ninja.objects.create(first_name="tim", last_name="lee", dojo=d2)
+Out[17]: <Blog object: tim lee Dojo object >
+
+In [18]: Ninja.objects.create(first_name="yuk", last_name="hir", dojo=d2)
+Out[18]: <Blog object: yuk hir Dojo object >
+
+In [19]: Ninja.objects.create(first_name="chr", last_name="huh", dojo=d2)
+Out[19]: <Blog object: chr huh Dojo object >
+
+In [20]: Ninja.objects.create(first_name="bre", last_name="far", dojo=d3)
+Out[20]: <Blog object: bre far Dojo object >
+
+In [21]: Ninja.objects.create(first_name="kio", last_name="asn", dojo=d3)
+Out[21]: <Blog object: kio asn Dojo object >
+
+In [22]: Ninja.objects.create(first_name="jac", last_name="bqd", dojo=d3)
+Out[22]: <Blog object: jac bqd Dojo object >
+
+In [23]: Ninja.objects.all()
+Out[23]: <QuerySet [<Blog object: Jred kim Dojo object >, <Blog object: jim che Dojo object >, <Blog object: tim lee Dojo object >, <Blog object: yuk hir Dojo object >, <Blog object: chr huh Dojo object >, <Blog object: bre far Dojo object >, <Blog object: kio asn Dojo object >, <Blog object: jac bqd Dojo object >]>
+
+In [24]: n1 = Ninja.objects.get(id=1)
+
+In [25]: n2 = Ninja.objects.get(id=2)
+
+In [26]: n3 = Ninja.objects.get(id=3)
+
+In [27]: n4 = Ninja.objects.get(id=4)
+
+In [28]: n5 = Ninja.objects.get(id=5)
+
+In [29]: n6 = Ninja.objects.get(id=6)
+
+In [30]: n7 = Ninja.objects.get(id=7)
+
+In [31]: n8 = Ninja.objects.get(id=8)
+
+In [33]: Ninja.objects.create(first_name="bar", last_name="naj", dojo=d1)
+Out[33]: <Blog object: bar naj Dojo object >
+
+In [34]: n9 = Ninja.objects.get(id=9)
+
+In [37]: d1.ninjas.all()
+Out[37]: <QuerySet [<Blog object: Jred kim Dojo object >, <Blog object: jim che Dojo object >, <Blog object: bar naj Dojo object >]>
+
+In [38]: 
